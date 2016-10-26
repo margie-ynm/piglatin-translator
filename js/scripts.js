@@ -9,19 +9,24 @@ var vowelCheck = function(check) {
   var checkArray = check.split(""); // Make "check" into array
   var checkLength = checkArray.length; // Find array length of "checkArray"
   var result = "";
+  var match = false;
 
-    for (var i = 0; i < checkLength; i += 1) {
+
+  // for (var i = 0; i < checkLength; i += 1) {
+    match = false;
     vowels.forEach(function(vowel) {
+      if (checkArray[0] === vowel) {
+        match = true;
+      }
+    });
+    if(!match) {
+      checkArray.unshift(checkArray.shift());
+    }
+  // };
 
-    if (checkArray[i] === vowel) {
-      var ay = "ay";
-      checkArray.push(ay);
-    };
-
-  });
-        checkArray = checkArray.join("");
-        return checkArray;
-  };
+  checkArray.push("ay");
+  checkArray = checkArray.join("");
+  return checkArray;
 };
 
 
